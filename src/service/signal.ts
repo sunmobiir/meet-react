@@ -7,6 +7,7 @@ export const signal = {
     sub: null,
     firstConnected: false,
     connect() {
+        return;
         let meetID=30;
         const PID='d2c9f7pn4tjh7d2q06p0';
 
