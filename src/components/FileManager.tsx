@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAppStore } from '@/store/useAppStore';
 import { FileText, Image as ImageIcon, FileBarChart2, File } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import {useParticipantStore} from "@/store/useParticipantStore.ts";
 
 const iconFor = (type: string) => {
   switch(type){
@@ -19,9 +20,9 @@ export const FileManager = () => {
   const addFile = useAppStore(s => s.addFile);
   const deleteFile = useAppStore(s => s.deleteFile);
   const currentUserId = useAppStore(s => s.ui.currentUserId);
-  const users = useAppStore(s => s.users);
+  const users = useParticipantStore().participants;
   const currentUser = users.find(u => u.id === currentUserId);
-  const canFile = !!currentUser?.permissions?.file;
+  const canFile = !!currentUser?.permission?.file;
 
   return (
     <section className="space-y-3">
